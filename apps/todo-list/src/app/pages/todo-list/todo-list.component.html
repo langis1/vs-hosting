@@ -1,0 +1,32 @@
+<div class="flex flex-col items-center gap-6">
+  @if (isLoadingList$ | async) {
+    <app-loader></app-loader>
+  } @else if (todoListError$ | async) {
+    <div class="flex flex-col items-center">
+      Something went wrong, please try again
+      <button class="mt-3" mat-flat-button color="primary" (click)="fetchData()">Retry</button>
+    </div>
+  } @else {
+    <div class="w-full">
+      <app-create-todo></app-create-todo>
+    </div>
+    @if ((todoList$ | async)?.length) {
+      <div class="w-full">
+        <div class="mb-4">
+          <app-info-panel></app-info-panel>
+        </div>
+        <app-todo-filter (todoFilter)="todoFilter$.next($event)"></app-todo-filter>
+      </div>
+      <div class="flex flex-col h-[22rem] w-full gap-6 overflow-auto scrollbar p-2">
+        @for (todo of filteredTodoList$ | async; track todo.id) {
+          <app-todo-item [todoItem]="todo"></app-todo-item>
+        }
+      </div>
+      <div class="w-full">
+        <app-mark-all-as-completed></app-mark-all-as-completed>
+      </div>
+    } @else {
+      <div>There is nothing to do...</div>
+    }
+  }
+</div>

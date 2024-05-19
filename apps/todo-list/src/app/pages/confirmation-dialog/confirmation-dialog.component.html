@@ -1,0 +1,9 @@
+<mat-dialog-content>
+  <p class="text-xl font-typeface-heading text-center max-w-[24rem]">{{ text }}</p>
+</mat-dialog-content>
+<mat-dialog-actions class="mt-24">
+  <div class="flex w-full justify-between">
+    <button mat-stroked-button color="primary" (click)="sendResult(false)">Cancel</button>
+    <button mat-flat-button color="primary" (click)="sendResult(true)">Delete</button>
+  </div>
+</mat-dialog-actions>

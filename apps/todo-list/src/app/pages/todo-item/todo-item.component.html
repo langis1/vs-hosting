@@ -1,0 +1,25 @@
+<div class="flex justify-between items-center pl-6 pr-3 rounded-lg bg-shadow-200 w-full h-20">
+  <div class="flex flex-col w-10">
+    @if (todoItem.completed) {
+      <mat-icon class="text-green-200">check_circle</mat-icon>
+    } @else {
+      <mat-icon class="text-red">cancel</mat-icon>
+    }
+  </div>
+  <span class="w-full overflow-hidden overflow-ellipsis whitespace-nowrap">{{ todoItem.text }}</span>
+  <button mat-icon-button [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu">
+    <mat-icon>more_horiz</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="[todoItem.id]">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-menu-item (click)="deleteTodo(todoItem.id)">
+      <mat-icon>delete_forever</mat-icon>
+      <span>Delete</span>
+    </button>
+  </mat-menu>
+</div>
+

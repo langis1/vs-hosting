@@ -1,5 +1,57 @@
+@import "@angular/material/prebuilt-themes/purple-green.css";
+
 @tailwind base;
+@layer base {
+
+  span, div, p {
+    @apply text-shadow-100;
+  }
+}
 @tailwind components;
 @tailwind utilities;
 
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+/*angular material css*/
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #00EEAB;
+}
+
+/*snackbar*/
+.mat-mdc-snack-bar-container {
+  &.snackbar-success {
+    --mdc-snackbar-container-color: #1EBD90;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+.mat-mdc-snack-bar-container {
+  &.snackbar-error {
+    --mdc-snackbar-container-color: #FF4057;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+/*scrollbar*/
+.scrollbar::-webkit-scrollbar {
+  width: 9px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #1F2332;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #363A52;
+  border-radius: 100vh;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #363A52;
+}

@@ -1,0 +1,25 @@
+<div class="flex justify-center p-4">
+  @if (isLoadingDetail$ | async) {
+    <app-loader></app-loader>
+  } @else {
+    <div class="flex flex-col w-full">
+      <div class="flex">
+        <mat-form-field class="w-full">
+          <mat-label>Update todo</mat-label>
+          <input matInput type="text" [formControl]="updateForm.controls.text">
+        </mat-form-field>
+      </div>
+      <mat-checkbox class="example-margin" [formControl]="updateForm.controls.completed">Completed</mat-checkbox>
+      <div class="flex justify-between mt-6">
+        <button mat-stroked-button color="primary" [routerLink]="['']">Cancel</button>
+        <button mat-flat-button color="primary" (click)="updateClick$.next()">
+          @if (isUpdatingTodo$ | async) {
+            <mat-spinner diameter="20"></mat-spinner>
+          } @else {
+            Update
+          }
+        </button>
+      </div>
+    </div>
+  }
+</div>

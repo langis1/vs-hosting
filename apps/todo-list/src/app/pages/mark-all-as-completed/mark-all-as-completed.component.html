@@ -1,0 +1,9 @@
+<div class="flex justify-between">
+  Everything done? <button mat-flat-button color="primary" (click)="markAllAsCompleted()">
+  @if (isMarkingAllAsCompleted$ | async) {
+    <mat-spinner diameter="20"></mat-spinner>
+  } @else {
+    Complete All
+  }
+</button>
+</div>

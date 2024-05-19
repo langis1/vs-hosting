@@ -1,0 +1,15 @@
+<div class="flex flex-col items-center">
+  <div class="flex w-full">
+    <mat-form-field class="w-full">
+      <mat-label>Create todo</mat-label>
+      <input autofocus matInput type="text" (keydown.enter)="createTodo()" [formControl]="createForm">
+    </mat-form-field>
+  </div>
+  <button mat-flat-button color="primary" (click)="createTodo()">
+    @if (isCreatingTodo$ | async) {
+      <mat-spinner diameter="20"></mat-spinner>
+    } @else {
+      <span>Create</span>
+    }
+  </button>
+</div>
