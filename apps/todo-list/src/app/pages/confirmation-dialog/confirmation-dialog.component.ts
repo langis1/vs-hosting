@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MAT_DIALOG_DATA,
@@ -15,10 +15,10 @@ import { MatButton } from '@angular/material/button';
   templateUrl: './confirmation-dialog.component.html',
 })
 export class ConfirmationDialogComponent {
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public text: string,
-    private matDialogRef: MatDialogRef<ConfirmationDialogComponent, boolean>
-  ) {}
+  private matDialogRef = inject(
+    MatDialogRef<ConfirmationDialogComponent, boolean>
+  );
+  public text = inject(MAT_DIALOG_DATA);
 
   public sendResult(confirmed: boolean): void {
     this.matDialogRef.close(confirmed);

@@ -66,7 +66,7 @@ export class TodoDetailComponent implements OnDestroy {
 
   public updateClick$ = new Subject<void>();
   private ngDestroy$ = new Subject<void>();
-  public todo$!: Observable<TodoResponse>;
+  public todo$: Observable<TodoResponse>;
 
   constructor() {
     this.isUpdatingTodo$ = this.store.pipe(select(selectIsUpdatingTodo));

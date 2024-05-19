@@ -1,17 +1,15 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TodoRequest, TodoResponse } from '../models/todo.models';
-import { Environment, ENVIRONMENT } from '../../environment';
+import { ENVIRONMENT } from '../../environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiCallsService {
-  constructor(
-    private http: HttpClient,
-    @Inject(ENVIRONMENT) private environment: Environment
-  ) {}
+  private http = inject(HttpClient);
+  private environment = inject(ENVIRONMENT);
 
   public listTodos(): Observable<TodoResponse[]> {
     return this.http.get<TodoResponse[]>(`${this.environment.apiUrl}/todos`, {

@@ -31,8 +31,8 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
   templateUrl: './create-todo.component.html',
 })
 export class CreateTodoComponent {
-  store = inject(Store);
-  actions$ = inject(Actions);
+  private store = inject(Store);
+  private actions$ = inject(Actions);
   public isCreatingTodo$: Observable<boolean>;
   public createForm = new FormControl();
 

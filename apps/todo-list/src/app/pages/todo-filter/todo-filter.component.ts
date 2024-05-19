@@ -18,12 +18,12 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class TodoFilterComponent {
   @Output() todoFilter: EventEmitter<string> = new EventEmitter<string>();
 
-  public filterParams: FormControl;
+  public filterParamsForm: FormControl;
 
   constructor() {
-    this.filterParams = new FormControl('all');
+    this.filterParamsForm = new FormControl('all');
 
-    this.filterParams.valueChanges.pipe().subscribe((filterParams) => {
+    this.filterParamsForm.valueChanges.pipe().subscribe((filterParams) => {
       this.todoFilter.emit(filterParams);
     });
   }

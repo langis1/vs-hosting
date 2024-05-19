@@ -16,8 +16,8 @@ import {
 export class InfoPanelComponent {
   private store = inject(Store);
 
-  public completedTodos$!: Observable<number>;
-  public unCompletedTodos$!: Observable<number>;
+  public completedTodos$: Observable<number>;
+  public unCompletedTodos$: Observable<number>;
 
   constructor() {
     this.completedTodos$ = this.store.pipe(select(selectCompletedTodos));

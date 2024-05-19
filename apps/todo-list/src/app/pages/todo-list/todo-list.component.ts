@@ -33,12 +33,12 @@ import { MarkAllAsCompletedComponent } from '../mark-all-as-completed/mark-all-a
   templateUrl: './todo-list.component.html',
 })
 export class TodoListComponent {
-  private readonly store = inject(Store);
-  public readonly todoList$: Observable<TodoResponse[]>;
-  public readonly isLoadingList$: Observable<boolean>;
-  public readonly filteredTodoList$: Observable<TodoResponse[]>;
-  public readonly todoFilter$ = new BehaviorSubject<string>('all');
-  public readonly todoListError$: Observable<boolean>;
+  private store = inject(Store);
+  public todoList$: Observable<TodoResponse[]>;
+  public isLoadingList$: Observable<boolean>;
+  public filteredTodoList$: Observable<TodoResponse[]>;
+  public todoFilter$ = new BehaviorSubject<string>('all');
+  public todoListError$: Observable<boolean>;
 
   constructor() {
     this.fetchData();
