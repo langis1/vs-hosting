@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnDestroy,
+  OnDestroy, OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -33,8 +33,8 @@ import {
 } from '../../store/selectors/todos.selectors';
 import { selectRouteParams } from '../../store/selectors/router.selectors';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { LoaderComponent } from '../loader/loader.component';
+import { TodoState } from '../../models/state.models';
 
 @Component({
   selector: 'app-todo-detail',
@@ -49,26 +49,25 @@ import { LoaderComponent } from '../loader/loader.component';
     MatButton,
     RouterLink,
     MatCheckbox,
-    MatProgressSpinner,
     LoaderComponent,
   ],
   templateUrl: './todo-detail.component.html',
 })
-export class TodoDetailComponent implements OnDestroy {
-  private store = inject(Store);
-  public isUpdatingTodo$: Observable<boolean>;
-  public isLoadingDetail$: Observable<boolean>;
-  private routerParams$!: Observable<Params>;
+export class TodoDetailComponent implements OnInit, OnDestroy {
+  private store: Store<TodoState> = inject(Store<TodoState>);
+  public isUpdatingTodo$: Observable<boolean> = new Observable<boolean>();
+  public isLoadingDetail$: Observable<boolean> = new Observable<boolean>();
+  private routerParams$: Observable<Params> = new Observable<Params>();
   public updateForm = new FormGroup({
-    text: new FormControl(''),
-    completed: new FormControl(false),
+    text: new FormControl<string>(''),
+    completed: new FormControl<boolean>(false),
   });
 
   public updateClick$ = new Subject<void>();
   private ngDestroy$ = new Subject<void>();
-  public todo$: Observable<TodoResponse>;
+  public todo$: Observable<TodoResponse> = new Observable<TodoResponse>();
 
-  constructor() {
+  public ngOnInit() {
     this.isUpdatingTodo$ = this.store.pipe(select(selectIsUpdatingTodo));
     this.isLoadingDetail$ = this.store.pipe(select(selectIsLoadingTodoDetail));
 
@@ -98,8 +97,8 @@ export class TodoDetailComponent implements OnDestroy {
           this.store.dispatch(
             updateTodo({
               id: updatedTodo?.id,
-              text: this.updateForm.controls.text.value!,
-              completed: this.updateForm.controls.completed.value!,
+              text: this.updateForm.controls.text.value as string,
+              completed: this.updateForm.controls.completed.value as boolean,
             })
           );
         }),

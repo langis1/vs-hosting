@@ -7,7 +7,7 @@
   </div>
   <button mat-flat-button color="primary" (click)="createTodo()">
     @if (isCreatingTodo$ | async) {
-      <mat-spinner diameter="20"></mat-spinner>
+      <app-loader [diameter]="20"></app-loader>
     } @else {
       <span>Create</span>
     }

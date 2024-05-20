@@ -7,6 +7,7 @@ import { MatIcon } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
 import { deleteTodo } from '../../store/actions/todos.actions';
 import { RouterLink } from '@angular/router';
+import { TodoState } from '../../models/state.models';
 
 @Component({
   selector: 'app-todo-item',
@@ -24,7 +25,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './todo-item.component.html',
 })
 export class TodoItemComponent {
-  private store = inject(Store);
+  private store: Store<TodoState> = inject(Store<TodoState>);
   @Input({ required: true }) public todoItem!: TodoResponse;
 
   public deleteTodo(id: number) {

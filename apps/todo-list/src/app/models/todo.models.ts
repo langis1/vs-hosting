@@ -7,3 +7,9 @@ export interface TodoRequest {
 export interface TodoResponse extends TodoRequest {
   id: number;
 }
+
+export enum TodoStatus {
+  ALL = 'all',
+  COMPLETED = 'completed',
+  UNCOMPLETED = 'uncompleted',
+}

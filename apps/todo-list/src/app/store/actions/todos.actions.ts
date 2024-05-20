@@ -44,7 +44,7 @@ export const deleteTodoError = createAction(
   '[Todo Item Component] Delete Todo Error'
 );
 
-// uodate todo
+// update todo
 export const updateTodo = createAction(
   '[Todo Detail Component] Update Todo',
   props<TodoRequest>()

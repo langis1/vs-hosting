@@ -14,7 +14,7 @@
         <button mat-stroked-button color="primary" [routerLink]="['']">Cancel</button>
         <button mat-flat-button color="primary" (click)="updateClick$.next()">
           @if (isUpdatingTodo$ | async) {
-            <mat-spinner diameter="20"></mat-spinner>
+            <app-loader [diameter]="20"></app-loader>
           } @else {
             Update
           }

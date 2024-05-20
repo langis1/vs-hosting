@@ -1,5 +1,5 @@
 <mat-radio-group [formControl]="filterParamsForm" class="flex justify-between">
-  <mat-radio-button class="example-margin" value="all">All</mat-radio-button>
-  <mat-radio-button class="example-margin" value="completed">Completed</mat-radio-button>
-  <mat-radio-button class="example-margin" value="uncompleted">Uncompleted</mat-radio-button>
+  <mat-radio-button [value]="TodoStatus.ALL">All</mat-radio-button>
+  <mat-radio-button [value]="TodoStatus.COMPLETED">Completed</mat-radio-button>
+  <mat-radio-button [value]="TodoStatus.UNCOMPLETED">Uncompleted</mat-radio-button>
 </mat-radio-group>

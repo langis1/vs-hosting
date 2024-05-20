@@ -17,7 +17,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
     provideRouter(appRoutes),
-    provideStore(),
     provideStore({
       router: routerReducer,
     }),
@@ -34,6 +33,5 @@ export const appConfig: ApplicationConfig = {
       provide: MAT_SNACK_BAR_DATA,
       useValue: {},
     },
-    provideRouterStore(),
   ],
 };
